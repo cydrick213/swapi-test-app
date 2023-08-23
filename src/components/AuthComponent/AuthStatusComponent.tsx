@@ -1,37 +1,40 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from 'antd'
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
+import { Button } from 'antd';
+import {AuthenticatedContainer, UnauthenticatedContainer} from "./AuthStatusStyles";
 
-const AuthStatus: React.FC = () => {
+const AuthStatusComponent: React.FC = () => {
     const { loadUser, logoutFn } = useAuth()
     const navigate = useNavigate()
     const user = loadUser();
 
     if (!user) {
         return (
-            <div style={{ paddingTop: '10px', color: '#e5195f', textAlign: 'center' }}>
+            <UnauthenticatedContainer>
                 <p>You are not logged in.</p>
-            </div>
+            </UnauthenticatedContainer>
         )
     }
 
     return (
-        <div style={{ height: '15px', display: 'flex', marginRight: '0', marginLeft: 'auto' }}>
+        <AuthenticatedContainer>
             <p>
                 Welcome! <b>{user.username}</b>{' '}
             </p>
             <Button
+                className="sign-out-btn"
                 style={{ marginLeft: '10px' }}
                 onClick={async () => {
                     await logoutFn()
 
                     navigate('/')
+                    window.location.reload();
                 }}>
                 Sign out
             </Button>
-        </div>
+        </AuthenticatedContainer>
     )
 }
 
-export default AuthStatus
+export default AuthStatusComponent

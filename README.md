@@ -1,10 +1,21 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Pre-requisite Actions
+
+Please add `.env.local` file to the swapi-test-app root directory.\
+Inside the `.env.local` please add this env variable `REACT_APP_API_URL=https://swapi.dev/api/` \
+To ensure that the app will be ready for a connection and receive the data from [swapi api](https://swapi.dev/)\
+Before executing below instructions to run the app as well.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Run this command to ensure first that all dependencies are properly installed from the package.json list of dependencies.\
+To make sure there will be no issues when starting or running the app after.
 
 ### `npm start`
 

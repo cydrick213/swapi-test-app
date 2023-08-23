@@ -50,3 +50,10 @@ export const CardFieldset = styled.fieldset`
       margin-top: 50px;
    }
 `
+
+export const ErrorLabel = styled.label`
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+  color: #e5195f;
+`

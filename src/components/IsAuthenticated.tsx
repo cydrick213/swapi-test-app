@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 
 const IsAuthenticated = ({ children }: { children: JSX.Element }) => {
     const {loadUser} = useAuth()
-    const user = loadUser()
+    const user = loadUser();
     const location = useLocation()
 
     if (user) {
