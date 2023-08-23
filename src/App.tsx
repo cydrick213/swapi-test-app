@@ -4,7 +4,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
 import LayoutHeader from "./components/LayoutHeader";
 import IsAuthenticated from "./components/IsAuthenticated";
-import { LoginPage } from './pages/Login';
+import RequireAuth from "./components/RequireAuth";
+
+import LoginPage from './pages/Login';
+import HomePage from "./pages/Home";
+import CharacterPage from "./pages/Character";
 
 const App: React.FC = () => {
   return (
@@ -26,6 +30,22 @@ const App: React.FC = () => {
                         <IsAuthenticated>
                             <LoginPage />
                         </IsAuthenticated>
+                    }
+                />
+                <Route
+                    path="/home-page"
+                    element={
+                        <RequireAuth>
+                            <HomePage />
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/people-page"
+                    element={
+                        <RequireAuth>
+                            <CharacterPage />
+                        </RequireAuth>
                     }
                 />
             </Route>

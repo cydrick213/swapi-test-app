@@ -31,8 +31,16 @@ const LayoutHeader: React.FC = () => {
                             <Link to="/home-page">Home</Link>
                         </Menu.Item>
 
-                        <Menu.Item key="/film-page">
-                            <Link to="/film-page">Films</Link>
+                        <Menu.Item key="/people-page">
+                            <Link to="/people-page">Characters</Link>
+                        </Menu.Item>
+
+                        <Menu.Item key="/ship-page">
+                            <Link to="/ship-page">Starships</Link>
+                        </Menu.Item>
+
+                        <Menu.Item key="/planet-page">
+                            <Link to="/planet-page">Planets</Link>
                         </Menu.Item>
 
                         <Menu.Item key="logout" style={{ marginRight: '0', marginLeft: 'auto' }}>

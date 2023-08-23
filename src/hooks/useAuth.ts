@@ -4,7 +4,7 @@ import {LoginCredentials, User} from "../global/types";
 const useAuth = () => {
     const user_data: User = {
         id: '1',
-        email: 'test@umpisa.com',
+        email: 'test@umpisa.co',
         username: 'user-swapi',
         password: 'P@ssword01',
         role: 'admin',

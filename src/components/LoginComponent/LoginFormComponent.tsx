@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import useAuth from "../../hooks/useAuth";
 import {Button, Card, CardFieldset, ErrorLabel} from './LoginFormStyles';
-import {TextInput} from "../FormComponents/Input/InputComponent";
+import {TextInput} from "../InputComponent/InputComponent";
 
 export interface IFormInput {
     email: string

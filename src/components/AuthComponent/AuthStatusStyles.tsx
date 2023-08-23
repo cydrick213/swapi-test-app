@@ -7,10 +7,6 @@ export const AuthenticatedContainer = styled.div`
     margin-left: auto;
 `
 
-export const Button = styled.button`
-    margin-left: 10px;
-`
-
 export const UnauthenticatedContainer = styled.div`
     padding-top: 10px;
     color: red;

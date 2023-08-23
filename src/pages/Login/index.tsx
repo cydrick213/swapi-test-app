@@ -3,10 +3,12 @@ import { LoginForm } from '../../components/LoginComponent/LoginFormComponent';
 
 import {LoginContainer} from "./styles";
 
-export const LoginPage = () => {
+const LoginPage: React.FC = () => {
     return (
         <LoginContainer>
             <LoginForm />
         </LoginContainer>
     )
 }
+
+export default LoginPage
