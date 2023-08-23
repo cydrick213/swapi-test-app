@@ -10,7 +10,6 @@ export const Card = styled.div`
    border-radius: 5px;
 `
 
-/* Todo: Styled Components with Storybook  */
 export const Button = styled.button`
    display: block;
    width: 100%;
