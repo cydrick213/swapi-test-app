@@ -1,5 +1,5 @@
 import { LocalStorage } from '../services'
-import {LoginCredentials, User} from "../const/types";
+import {LoginCredentials, User} from "../global/types";
 
 const useAuth = () => {
     const user_data: User = {

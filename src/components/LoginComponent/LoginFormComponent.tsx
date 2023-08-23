@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
 import useAuth from "../../hooks/useAuth";
-import {Button, Card, CardFieldset} from './LoginFormStyles';
+import {Button, Card, CardFieldset, ErrorLabel} from './LoginFormStyles';
 import {TextInput} from "../FormComponents/Input/InputComponent";
 
 export interface IFormInput {
@@ -14,6 +14,7 @@ export interface IFormInput {
 export const LoginForm = () => {
     const navigate = useNavigate()
     const { loginFn } = useAuth()
+    const [error, setError] = useState<string>('')
 
     const { register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
@@ -23,11 +24,11 @@ export const LoginForm = () => {
     })
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        console.log('123')
-        await loginFn(data)
+        const response = await loginFn(data)
 
         // wait for login before navigate
-        navigate('/', { replace: true })
+        response ? navigate('/', { replace: true }) :
+            setError("Invalid email and/or password. Please try again.");
     }
 
     return (
@@ -40,7 +41,7 @@ export const LoginForm = () => {
                 <CardFieldset>
                     <TextInput placeholder="Password" type="password" {...register('password')} />
                 </CardFieldset>
-
+                {error !== "" && <ErrorLabel>{error}</ErrorLabel>}
                 <CardFieldset>
                     <Button type="submit" value="submit">
                         LOGIN

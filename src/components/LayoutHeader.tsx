@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import useAuth from "../hooks/useAuth";
-import AuthStatus from "./AuthStatus";
+import AuthStatusComponent from "./AuthComponent/AuthStatusComponent";
 
 const { Header  } = Layout
 
@@ -36,13 +36,13 @@ const LayoutHeader: React.FC = () => {
                         </Menu.Item>
 
                         <Menu.Item key="logout" style={{ marginRight: '0', marginLeft: 'auto' }}>
-                            <AuthStatus />
+                            <AuthStatusComponent />
                         </Menu.Item>
                     </Menu>
                 </Header>
             )}
 
-            {!user && <AuthStatus />}
+            {!user && <AuthStatusComponent />}
 
             {/* The <Outlet> element is used as a placeholder. In this case an <Outlet> enables the Users component to render its child routes. */}
             <Outlet />
