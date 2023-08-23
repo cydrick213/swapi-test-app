@@ -2,7 +2,7 @@ import React from "react";
 import {
     PageHeader,
 } from 'antd'
-import SearchComponent from "../../components/HomeComponent/SearchComponent";
+import SearchComponent from "../../components/SearchComponent";
 import CardList from "../../components/HomeComponent/CardList/CardListComponent";
 import useDataHooks from "../../hooks/useDataHook";
 import {LoadingScreen} from "../../components/LoadingScreenComponent/LodingScreenComponent";

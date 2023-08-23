@@ -9,6 +9,8 @@ import RequireAuth from "./components/RequireAuth";
 import LoginPage from './pages/Login';
 import HomePage from "./pages/Home";
 import CharacterPage from "./pages/Character";
+import StarshipPage from "./pages/Ship";
+import PlanetPage from "./pages/Planet";
 
 const App: React.FC = () => {
   return (
@@ -45,6 +47,22 @@ const App: React.FC = () => {
                     element={
                         <RequireAuth>
                             <CharacterPage />
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/ship-page"
+                    element={
+                        <RequireAuth>
+                            <StarshipPage />
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/planet-page"
+                    element={
+                        <RequireAuth>
+                            <PlanetPage />
                         </RequireAuth>
                     }
                 />

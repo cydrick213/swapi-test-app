@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {fetchMovies} from "../api/films-api";
 import {fetchCharacters} from "../api/people-api";
+import {fetchStarShips} from "../api/starship-api";
+import {fetchPlanets} from "../api/planet-api";
 
 const useDataHooks = (type: string) => {
     const [data, setData] = useState<any>(null);
@@ -19,6 +21,12 @@ const useDataHooks = (type: string) => {
                     break;
                 case 'char':
                     response = await fetchCharacters();
+                    break;
+                case 'ship':
+                    response = await fetchStarShips();
+                    break;
+                case 'planet':
+                    response = await fetchPlanets();
                     break;
                 default:
                     response = null;
@@ -45,6 +53,12 @@ const useDataHooks = (type: string) => {
                     filteredMonsters = data.filter((monster: any) => monster?.title.toLowerCase().includes(search.toLowerCase()));
                     break;
                 case 'char':
+                    filteredMonsters = data.filter((monster: any) => monster?.name.toLowerCase().includes(search.toLowerCase()));
+                    break;
+                case 'ship':
+                    filteredMonsters = data.filter((monster: any) => monster?.name.toLowerCase().includes(search.toLowerCase()));
+                    break;
+                case 'planet':
                     filteredMonsters = data.filter((monster: any) => monster?.name.toLowerCase().includes(search.toLowerCase()));
                     break;
                 default:

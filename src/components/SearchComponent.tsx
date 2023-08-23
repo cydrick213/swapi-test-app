@@ -1,6 +1,6 @@
 import React from "react";
 import {Col, Form, Input, Row} from "antd";
-import {SearchProps} from "../../global/types";
+import {SearchProps} from "../global/types";
 
 const SearchComponent: React.FC<SearchProps> = (props: SearchProps) => {
     const {search, handleChange} = props
@@ -12,7 +12,7 @@ const SearchComponent: React.FC<SearchProps> = (props: SearchProps) => {
                     <Form.Item name="searchName">
                         <Input
                             className="search"
-                            placeholder="search..."
+                            placeholder="search by name or title..."
                             value={search}
                             onChange={(e) => handleChange(e.target.value)}
                             allowClear
