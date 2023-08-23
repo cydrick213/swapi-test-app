@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import useAuth from "../../hooks/useAuth";
 import {Button, Card, CardFieldset, ErrorLabel} from './LoginFormStyles';
 import {TextInput} from "../InputComponent/InputComponent";
+import {LoadingScreen} from "../LoadingScreenComponent/LodingScreenComponent";
 
 export interface IFormInput {
     email: string
@@ -15,6 +16,7 @@ export const LoginForm = () => {
     const navigate = useNavigate()
     const { loginFn } = useAuth()
     const [error, setError] = useState<string>('')
+    const [loader, setLoader] = useState<boolean>(false)
 
     const { register, handleSubmit } = useForm<IFormInput>({
         defaultValues: {
@@ -23,16 +25,23 @@ export const LoginForm = () => {
         },
     })
 
-    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        const response = await loginFn(data)
+    const onSubmit: SubmitHandler<IFormInput> = (data) => {
+        setLoader(true)
+        const response = loginFn(data)
 
         // wait for login before navigate
-        response ? navigate('/', { replace: true }) :
+        if (response) {
+            navigate('/', { replace: true });
+            window.location.reload();
+        } else {
             setError("Invalid email and/or password. Please try again.");
+        }
+        setLoader(false);
     }
 
     return (
         <Card>
+            {loader && <LoadingScreen/>}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <CardFieldset>
                     <TextInput placeholder="Email" {...register('email')} />

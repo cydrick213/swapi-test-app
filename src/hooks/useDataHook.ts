@@ -4,11 +4,13 @@ import {fetchCharacters} from "../api/people-api";
 
 const useDataHooks = (type: string) => {
     const [data, setData] = useState<any>(null);
+    const [loader, setLoader] = useState<boolean>(false)
     const [searchName, setSearchName] = useState<string>("");
 
     useEffect(() => handleFetch(), []);
 
     const handleFetch = () => {
+        setLoader(true)
         const fn = async () => {
             let response = null;
             switch (type) {
@@ -23,7 +25,10 @@ const useDataHooks = (type: string) => {
                     break;
             }
 
-            response && setData(response.results)
+            if (response) {
+                setData(response.results)
+                setLoader(false)
+            }
         }
         fn().then();
     }
@@ -32,6 +37,7 @@ const useDataHooks = (type: string) => {
         if (search === "") {
             handleFetch();
         } else {
+            setLoader(true)
             setSearchName(search)
             let filteredMonsters = null;
             switch (type) {
@@ -46,11 +52,15 @@ const useDataHooks = (type: string) => {
                     break;
             }
 
-            filteredMonsters && setData(filteredMonsters)
+            if (filteredMonsters) {
+                setData(filteredMonsters)
+                setLoader(false)
+            }
         }
     }
 
     return {
+        loader,
         searchName,
         handleChange,
         data

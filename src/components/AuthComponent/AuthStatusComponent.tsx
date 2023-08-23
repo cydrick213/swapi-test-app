@@ -29,6 +29,7 @@ const AuthStatusComponent: React.FC = () => {
                     await logoutFn()
 
                     navigate('/')
+                    window.location.reload();
                 }}>
                 Sign out
             </Button>

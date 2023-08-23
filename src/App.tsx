@@ -48,6 +48,14 @@ const App: React.FC = () => {
                         </RequireAuth>
                     }
                 />
+                <Route
+                    path="*"
+                    element={
+                        <main style={{ padding: '1rem' }}>
+                            <p>Theres nothing here!</p>
+                        </main>
+                    }
+                />
             </Route>
         </Routes>
       </Router>
